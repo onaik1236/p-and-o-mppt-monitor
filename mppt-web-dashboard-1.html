@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P&O MPPT Dashboard</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #76ff03;
+            margin-bottom: 40px;
+        }
+        h2 {
+            text-align: center;
+            color: #03dac6;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.03);
+        }
+        .card h3 {
+            color: #bb86fc;
+            margin-top: 0;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+        .card p {
+            margin: 10px 0;
+            padding: 5px;
+            background-color: #282828;
+            border-radius: 6px;
+            color: #bdbdbd;
+        }
+        .slider-container {
+            margin: 20px 0;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .sub-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .sub-card {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            color: #e0e0e0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .graph {
+            width: 100%;
+            height: 300px;
+            background-color: #282828;
+            border-radius: 8px;
+            margin: 10px 0;
+            color: #00e676;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.2);
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #03dac6;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #bb86fc;
+        }
+    </style>
+</head>
+<body>
+
+<h1>P&O MPPT Dashboard</h1>
+
+<div class="container">
+    <!-- Real-Time Data -->
+    <div class="card">
+        <h3>Real-Time Data</h3>
+        <div class="sub-display">
+            <div class="sub-card">
+                <p><strong>Input Voltage (V_in):</strong> 18.5 V</p>
+                <p><strong>Input Current (I_in):</strong> 3.2 A</p>
+            </div>
+            <div class="sub-card">
+                <p><strong>Output Voltage (V_out):</strong> 24.0 V</p>
+                <p><strong>Output Current (I_out):</strong> 2.6 A</p>
+            </div>
+            <div class="sub-card">
+                <p><strong>Power Input (P_in):</strong> 59.2 W</p>
+                <p><strong>Power Output (P_out):</strong> 62.4 W</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MPPT Parameters -->
+    <div class="card">
+        <h3>MPPT Parameters</h3>
+        <div class="sub-display">
+            <div class="sub-card">
+                <p><strong>Duty Cycle (D):</strong> 0.85</p>
+            </div>
+            <div class="sub-card">
+                <p><strong>Change in Voltage (ΔV):</strong> 0.1 V</p>
+            </div>
+            <div class="sub-card">
+                <p><strong>Change in Power (ΔP):</strong> 1.5 W</p>
+            </div>
+            <div class="sub-card">
+                <p><strong>Current MPP Voltage (V_MPP):</strong> 23.5 V</p>
+            </div>
+            <div class="sub-card">
+                <p><strong>Current MPP Power (P_MPP):</strong> 61.0 W</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Graphical Representations -->
+    <div class="card">
+        <h3>Power vs Voltage (P-V) Curve</h3>
+        <div class="graph">[P-V Graph Placeholder]</div>
+    </div>
+
+    <div class="card">
+        <h3>Current vs Voltage (I-V) Curve</h3>
+        <div class="graph">[I-V Graph Placeholder]</div>
+    </div>
+
+    <!-- Efficiency -->
+    <div class="card">
+        <h3>Efficiency</h3>
+        <div class="sub-card">
+            <p><strong>Conversion Efficiency:</strong> 105.4%</p>
+        </div>
+    </div>
+
+    <!-- Sliders for Halogen Bulbs -->
+    <div class="card">
+        <h3>Adjust Light Intensity (Halogen Bulbs)</h3>
+        <div class="slider-container">
+            <label>Bulb 1 Intensity</label>
+            <input type="range" min="0" max="100" value="50">
+        </div>
+        <div class="slider-container">
+            <label>Bulb 2 Intensity</label>
+            <input type="range" min="0" max="100" value="50">
+        </div>
+        <div class="slider-container">
+            <label>Bulb 3 Intensity</label>
+            <input type="range" min="0" max="100" value="50">
+        </div>
+        <div class="slider-container">
+            <label>Bulb 4 Intensity</label>
+            <input type="range" min="0" max="100" value="50">
+        </div>
+        <div class="slider-container">
+            <label>Bulb 5 Intensity</label>
+            <input type="range" min="0" max="100" value="50">
+        </div>
+        <div class="slider-container">
+            <label>Bulb 6 Intensity</label>
+            <input type="range" min="0" max="100" value="50">
+        </div>
+    </div>
+</div>
+
+<!-- Button Container -->
+<div class="button-container">
+    <button>Submit Data</button>
+</div>
+
+<script>
+    // Placeholder for future dynamic updates, like charts and real-time data
+</script>
+
+</body>
+</html>
